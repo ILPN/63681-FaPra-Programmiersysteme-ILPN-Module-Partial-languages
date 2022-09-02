@@ -131,7 +131,7 @@ export class DisplayMergedRunComponent
                         this.layoutService.centerRuns(
                             [modifiedRun],
                             w / 2,
-                            h / 2 + 40
+                            h / 2
                         );
                 }
                 return this.svgService.createSvgElements(

@@ -494,13 +494,13 @@ export class LayoutService {
                 if ((e.x ?? 0) < runBoundsXMin) {
                     runBoundsXMin = e.x ?? 0;
                 }
-                if ((e.x ?? 0) > runBoundsXMax) {
+                if ((e.x ?? 0) > runBoundsXMax - eventSize) {
                     runBoundsXMax = (e.x ?? 0) + eventSize;
                 }
-                if ((e.x ?? 0) < runBoundsYMin) {
+                if ((e.y ?? 0) < runBoundsYMin) {
                     runBoundsYMin = e.y ?? 0;
                 }
-                if ((e.y ?? 0) > runBoundsYMax) {
+                if ((e.y ?? 0) > runBoundsYMax - eventSize) {
                     runBoundsYMax = (e.y ?? 0) + eventSize;
                 }
             });
@@ -512,7 +512,7 @@ export class LayoutService {
                     if ((e.x ?? 0) > runBoundsXMax) {
                         runBoundsXMax = e.x ?? 0;
                     }
-                    if ((e.x ?? 0) < runBoundsYMin) {
+                    if ((e.y ?? 0) < runBoundsYMin) {
                         runBoundsYMin = e.y ?? 0;
                     }
                     if ((e.y ?? 0) > runBoundsYMax) {

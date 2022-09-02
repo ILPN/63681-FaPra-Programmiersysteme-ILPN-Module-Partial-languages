@@ -213,29 +213,23 @@ export class MergeService {
 function haveSameIncomingArcs(element1: Element, element2: Element): boolean {
     let haveSame = true;
     element1.incomingArcs.forEach((arc1) => {
-        let found = false;
-        element2.incomingArcs.forEach((arc2) => {
-            if (arc2.source == arc1.source) {
-                found = true;
-            }
-        });
-        if (!found) {
+        if (
+            element2.incomingArcs.filter((arc2) => arc2.source === arc1.source)
+                .length == 0
+        ) {
             haveSame = false;
         }
     });
     if (haveSame) {
         element2.incomingArcs.forEach((arc2) => {
-            let found = false;
-            element2.incomingArcs.forEach((arc1) => {
-                if (arc1.source == arc2.source) {
-                    found = true;
-                }
-            });
-            if (!found) {
+            if (
+                element1.incomingArcs.filter(
+                    (arc1) => arc2.source === arc1.source
+                ).length == 0
+            ) {
                 haveSame = false;
             }
         });
     }
-
     return haveSame;
 }

@@ -249,6 +249,7 @@ export class ParserService {
             }
             if (hasCycles(run)) {
                 removeCycles(run);
+                run.warnings.push(`File contains cyclic arcs`);
                 this.toastr.warning(
                     `Cyclic arcs are ignored`,
                     `File contains cyclic arcs`
@@ -256,6 +257,7 @@ export class ParserService {
             }
             if (hasTransitiveArcs(run)) {
                 removeTransitives(run);
+                run.warnings.push(`File contains transitive arcs`);
                 this.toastr.warning(
                     `Transitive arcs are ignored`,
                     `File contains transitive arcs`
