@@ -14,7 +14,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-
 import { AppComponent } from './app.component';
 import { CanvasComponent } from './components/canvas/canvas.component';
 import { ColorComponent } from './components/color/color.component';
@@ -25,6 +24,7 @@ import { DownloadPopoverComponent } from './components/download/download-popover
 import { FooterComponent } from './components/footer/footer.component';
 import { SourceFileTextareaComponent } from './components/source-file-textarea/source-file-textarea.component';
 import { TemplateButtonComponent } from './components/template-button/template-button.component';
+import { APP_BASE_HREF, PlatformLocation } from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -59,6 +59,13 @@ import { TemplateButtonComponent } from './components/template-button/template-b
         FormsModule,
         MatDialogModule,
     ],
-    bootstrap: [AppComponent],
+    providers: [
+        {
+            provide: APP_BASE_HREF,
+            useFactory: (s: PlatformLocation) => s.getBaseHrefFromDOM(),
+            deps: [PlatformLocation]
+        }
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {}
